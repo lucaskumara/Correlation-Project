@@ -18,7 +18,7 @@ const App = () => {
 		setDates(currentDates);
 	};
 
-	const showData = (data) => {
+	const updateData = (data) => {
 		const conHigh = document.getElementById("conversion-rate-high");
 		const conLow = document.getElementById("conversion-rate-low");
 		const conAvg = document.getElementById("conversion-rate-avg");
@@ -28,6 +28,7 @@ const App = () => {
 		const pearsonCoeff = document.getElementById("pearson-coeff");
 		const error_msg = "Not enough data found to calculate.";
 
+		// Set element content to data if its not null, otherwise set to the error msg
 		conHigh.textContent = data["usd/cad"]["high"] || error_msg;
 		conLow.textContent = data["usd/cad"]["low"] || error_msg;
 		conAvg.textContent = data["usd/cad"]["average"] || error_msg;
@@ -38,10 +39,12 @@ const App = () => {
 	};
 
 	const makeRequest = () => {
+		// Do nothing if no dates have been selected
 		if (dates.start === null || dates.end === null) {
 			return;
 		}
 
+		// Fetch data from API and update gui to reflect information
 		fetch("/api", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -51,7 +54,7 @@ const App = () => {
 			}),
 		})
 			.then((response) => response.json())
-			.then((data) => showData(data));
+			.then((data) => updateData(data));
 	};
 
 	return (
