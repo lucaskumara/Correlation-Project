@@ -1,5 +1,5 @@
 # Correlation-Project
-A simple application to calcuate correlations between USD/CAD exhange rates and CORRA rates for a coderbyte submission.
+A simple application to calcuate correlations between USD/CAD exchange rates and CORRA rates for a coderbyte submission.
 
 ## How to run
 The repository contains code for both the frontend GUI and backend API. The application uses React for the front end GUI and Flask for the backend API. Clone the repository and use two terminals to run the frontend and backend applications. Instructions to run them are listed below.
